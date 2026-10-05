@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-ground="page">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HeatSync Labs Blog Archive, 2009–2013</title>
+<meta name="description" content="A browseable copy of the original heatsynclabs.org WordPress blog — 241 posts and 19 pages with their photographs, 2009 to 2013.">
+<script>
+/* Set the theme before first paint so there is no flash. Default is light;
+   an explicit choice is remembered and wins over everything. */
+(function(){try{var t=localStorage.getItem('hslblog.theme');
+document.documentElement.setAttribute('data-theme', t==='dark'||t==='light'?t:'light');}catch(e){}})();
+</script>
+<link rel="stylesheet" href="assets/gantry-tokens.css">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="mast">
+  <div class="mast-in">
+    <a class="wordmark" href="#/">HeatSync<b>Labs</b></a>
+    <span class="mast-sub">Blog archive · 2009&ndash;2013</span>
+    <span class="mast-spacer"></span>
+    <nav class="views" id="views" aria-label="View">
+      <button data-view="timeline" aria-pressed="true">Timeline</button>
+      <button data-view="calendar" aria-pressed="false">Calendar</button>
+    </nav>
+    <button class="theme-btn" id="theme" type="button" aria-pressed="false">
+      <span aria-hidden="true" id="theme-ico">◐</span><span id="theme-txt">Dark</span>
+    </button>
+    <label class="skip" for="q">Search posts</label>
+    <input class="search" id="q" type="search" placeholder="search titles + text…" autocomplete="off">
+  </div>
+</header>
+<div class="tape"></div>
+
+<main id="main"></main>
+
+<footer class="colophon" data-ground="plate">
+  <div class="wrap">
+    <p><strong>What this is.</strong> A static, isolated copy of the original
+      <code>heatsynclabs.org</code> WordPress blog, generated from the site's own database dump.
+      Every post and page is also committed as Markdown in <code>posts/</code>, and every
+      photograph is a byte-for-byte copy of the file the blog served.</p>
+    <p id="colophon-stats"></p>
+    <p>Rebuild with <code>python3 build/build.py</code>.</p>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

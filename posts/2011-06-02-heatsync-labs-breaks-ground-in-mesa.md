@@ -1,0 +1,21 @@
+# HeatSync Labs Breaks Ground in Mesa!
+
+**Post** · 2011-06-02 · by `huertanix` · 6 comments · `wp_posts.ID=1761`
+
+---
+
+![There goes the neighborhood...](../images/uploads/2011/06/new_space.jpg)
+*Photo by HeatSync Labs.*
+
+
+HeatSync Labs officially finalized our lease in Mesa yesterday, and we've wasted no time putting our banner on our new location so that everyone in downtown Mesa realizes this!  Our new location is pretty awesome and full of possibilities, but there is a lot of work to be done in getting it up to speed, and we'll be needing all the help we can get to make this happen.  For anyone in Mesa who may have been on the fence on joining unless we moved into town, congratulations on winning us over!  Now [convince us we can afford to stay here](http://www.heatsynclabs.org/store/memberships/).
+
+For anyone interested in checking our the new space first-hand, a tour will be given on Friday, June 3rd at 7pm.
+
+HeatSync Labs Mesa is located east of Robson on Main Street at:
+[140 W Main St.
+Mesa, AZ](http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=140+w+main+st.+mesa,+az&aq=&sll=37.0625,-95.677068&sspn=34.945679,76.464844&ie=UTF8&hq=&hnear=140+W+Main+St,+Mesa,+Arizona+85201&ll=33.415289,-111.835499&spn=0.000795,0.001167&t=h&z=20)
+
+---
+
+[← archive index](../README.md)
