@@ -1,6 +1,8 @@
 # Pictures from Poker Night
 
-**Post** · 2009-10-15 · by `huertanix` · `wp_posts.ID=190`
+**Post** · 2009-10-15 · by `Drea` · `wp_posts.ID=190`
+
+> **Authorship corrected.** This post is stored in the WordPress database under the `huertanix` account, but it is not huertanix's. Drea (Andrea)'s account (`wp_users.ID=4`) was deleted and her posts were reassigned, which rewrote `post_author` on every one of them. Evidence: Predates the huertanix account. _edit_last=4.
 
 ---
 

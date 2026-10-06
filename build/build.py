@@ -76,7 +76,8 @@ def load_sql(sql_path, db_path):
             while i < n and payload[i] in ", \n":
                 i += 1
 
-    want = {"wp_posts", "wp_users", "wp_postmeta", "wp_ngg_gallery", "wp_ngg_pictures"}
+    want = {"wp_posts", "wp_users", "wp_postmeta", "wp_ngg_gallery", "wp_ngg_pictures",
+            "wp_comments"}
     con = sqlite3.connect(db_path)
     made = set()
     for m in re.finditer(r"INSERT INTO `(\w+)` VALUES (.*?);\n", data, re.S):
@@ -135,6 +136,15 @@ class Builder:
             self.pics[str(gid)].append(rec)
             self.pic_by_id[str(pid)] = rec
         self.users = {r[0]: r[1] for r in c.execute("SELECT ID,display_name FROM wp_users")}
+        # Curated authorship corrections. wp_posts.post_author is wrong for a block of
+        # 2009 posts that a "delete user and reassign" operation moved onto another
+        # account; build/attribution.json documents which, and why.
+        self.attrib, self.attrib_author = {}, {}
+        _ap = os.path.join(ROOT, "build", "attribution.json")
+        if os.path.exists(_ap):
+            _a = json.load(open(_ap))
+            self.attrib = _a.get("posts", {})
+            self.attrib_author = _a.get("author", {})
         self.copied = {}          # wp-content/... -> images/...
         self.stats = collections.Counter()
 
@@ -443,7 +453,19 @@ class Builder:
                 extras.append({"src": dest, "cap": cap,
                                "file": bool(re.search(r"\.(pdf|zip|docx?)$", dest, re.I))})
 
-            author_name = self.users.get(author, str(author))
+            stored_author = self.users.get(author, str(author))
+            fix = self.attrib.get(str(ID))
+            author_name = fix["signed_by"] if fix else stored_author
+            attrib_note = ""
+            if fix:
+                who = self.attrib_author.get("full", fix["signed_by"])
+                uid = self.attrib_author.get("wp_user_id")
+                attrib_note = (
+                    f"> **Authorship corrected.** This post is stored in the WordPress database "
+                    f"under the `{stored_author}` account, but it is not {stored_author}'s. "
+                    f"{who}'s account (`wp_users.ID={uid}`) was deleted and her posts were "
+                    f"reassigned, which rewrote `post_author` on every one of them. "
+                    f"Evidence: {fix['evidence']}")
             # Excerpt: prose only - drop image syntax, unwrap links, drop headings.
             ex = re.sub(r"!\[[^\]]*\]\([^)]*\)", " ", md_body)      # images
             ex = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", ex)         # links -> text
@@ -458,7 +480,10 @@ class Builder:
                   f"**{'Page' if ptype == 'page' else 'Post'}** · {d} · by `{author_name}`"
                   + (f" · status: {pstatus}" if pstatus != "publish" else "")
                   + (f" · {ccount} comments" if ccount and str(ccount) != "0" else "")
-                  + f" · `wp_posts.ID={ID}`", "", "---", "",
+                  + f" · `wp_posts.ID={ID}`", ""]
+            if attrib_note:
+                md += [attrib_note, ""]
+            md += ["---", "",
                   md_body if md_body.strip() else "*(no body text in the archive)*"]
             if extras:
                 md += ["", "---", "", "### Attached media", ""]
@@ -491,7 +516,9 @@ class Builder:
                     thumb = t
                     break
             index.append({"slug": name, "date": d, "title": title or "(untitled)",
-                          "author": author_name, "type": ptype, "status": pstatus,
+                          "author": author_name, "stored_author": stored_author,
+                          "attribution": (fix["confidence"] if fix else None),
+                          "type": ptype, "status": pstatus,
                           "comments": int(ccount or 0), "wp_id": str(ID),
                           "images": len([i for i in imgs_h if not i["raw"].lower().endswith(".pdf")]),
                           "thumb": thumb, "excerpt": excerpt, "words": len(text_only.split())})

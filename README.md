@@ -29,6 +29,7 @@ Plain static HTML/CSS/JS, no build step and no dependencies. `index.html` loads 
 | `data/html/` | pre-rendered post bodies, images at `images/…` |
 | `assets/` | GANTRY v2.0 tokens, site CSS/JS, self-hosted fonts |
 | `build/build.py` | regenerates everything from the WordPress database dump |
+| `build/attribution.json` | curated authorship corrections, with the evidence for each |
 
 ## Rebuild
 
@@ -53,13 +54,13 @@ Pushing to `main` redeploys the site automatically.
 - **7 Flash slideshows were Flickr photo sets.** This is the real photo loss, and it happened when the posts were written, not here: they embedded sets hosted on Flickr — accounts `25968780@N03` (the lab's `hslphotosync`), `zgiles` and `60761282@N03` — which never lived on the lab's server. Each is replaced by a block naming it and linking to the set, reconstructed from the `set_id` in the original flashvars. Most still resolve.
 - **7 Flash players were video.** Vimeo `.swf` embeds, replaced by a link to the clip.
 - **Post dates are WordPress `post_date`.** For *pages* that is the creation date, not the last edit — the About page is dated 2009 but its text was revised through 2012.
-- **2009 authorship is soft.** Several posts stored on the `huertanix` account are signed "drea", so early credentials appear to have been shared.
+- **Ten 2009 posts had the wrong author, and are corrected.** `wp_posts.post_author` credits them to `huertanix`; they are not his. A WordPress *delete-user-and-reassign* operation moved every post belonging to user ID 4 onto that account, rewriting `post_author` on all of them. User 4 was **Drea (Andrea)**, `drea@heatsynclabs.org`, who held the WordPress *editor* role. Nine of the ten are dated before the `huertanix` account existed (it was registered 2009-11-13 04:30; his first genuine post is 74 minutes later), and four are signed `drea`/`Drea` in the body. The archive now credits Drea and carries the evidence on each post; the database column is deliberately left untouched, since its wrongness is what documents the deletion. See [`build/attribution.json`](build/attribution.json).
 
 ## Who wrote it
 
 | Author | Posts | Span |
 |---|---|---|
-| `huertanix` (David Huerta, the elected Editor) | 140 | 2009-08 → 2011-07 |
+| `huertanix` (David Huerta, the elected Editor) | 130 | 2009-11 → 2011-07 |
 | `rrix` (Ryan Rix) | 43 | 2011-07 → 2012-06 |
 | `jjrosent` (Jacob Rosenthal) | 34 | 2011-11 → 2013-10 |
 | `uberschnitzel` | 7 | 2009-07 → 2012-11 |
@@ -68,8 +69,9 @@ Pushing to `main` redeploys the site automatically.
 | `will` (Will Bradley) | 4 | 2011-09 → 2012-06 |
 | `blhack` (Ryan McDermott) | 3 | 2012-11 → 2013-01 |
 | `Sierra` | 2 | 2009-09 |
+| **Drea** (Andrea) — corrected, see below | **10** | 2009-08 → 2009-12 |
 
-One person wrote 58% of it and stopped in July 2011, the same month the lab advertised for a replacement. Posts per year: **33 · 63 · 92 · 51 · 2**. The last entry launched a weekly format that never had a second issue.
+One person wrote 54% of it and stopped in July 2011, the same month the lab advertised for a replacement. Posts per year: **33 · 63 · 92 · 51 · 2**. The last entry launched a weekly format that never had a second issue.
 
 ## Theme
 

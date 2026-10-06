@@ -243,6 +243,12 @@ function viewPost(slug) {
         <h1>${esc(i.title)}</h1>
         <div class="byline">by ${esc(i.author)}${i.images ? ' · ' + i.images + ' image' + (i.images === 1 ? '' : 's') : ''}${i.comments ? ' · ' + i.comments + ' comments' : ''} · ${i.words} words</div>
       </div>
+      ${i.attribution ? `<p class="attrib"><strong>Authorship corrected.</strong>
+        Stored in the WordPress database under the <code>${esc(i.stored_author)}</code> account,
+        but not ${esc(i.stored_author)}'s — ${esc(i.author)}'s account was deleted and her posts
+        reassigned, which rewrote the author on every one of them.
+        ${i.attribution === 'confirmed' ? 'She signs this post in the body.'
+          : 'This post predates the ' + esc(i.stored_author) + ' account.'}</p>` : ''}
       <div class="content" id="body"><p class="note">loading…</p></div>
       <p class="srcline">Source: <code>wp_posts.ID=${esc(i.wp_id)}</code> ·
         Markdown: <code>posts/${esc(i.slug)}.md</code></p>

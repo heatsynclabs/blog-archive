@@ -1,6 +1,8 @@
 # just a wee bit of info...
 
-**Post** · 2009-09-02 · by `huertanix` · 3 comments · `wp_posts.ID=106`
+**Post** · 2009-09-02 · by `Drea` · 3 comments · `wp_posts.ID=106`
+
+> **Authorship corrected.** This post is stored in the WordPress database under the `huertanix` account, but it is not huertanix's. Drea (Andrea)'s account (`wp_users.ID=4`) was deleted and her posts were reassigned, which rewrote `post_author` on every one of them. Evidence: Signed off in the body: "=] / drea".
 
 ---
 

@@ -1,6 +1,8 @@
 # New Meeting Space - With Our Powers Combined....
 
-**Post** · 2009-12-19 · by `huertanix` · 2 comments · `wp_posts.ID=239`
+**Post** · 2009-12-19 · by `Drea` · 2 comments · `wp_posts.ID=239`
+
+> **Authorship corrected.** This post is stored in the WordPress database under the `huertanix` account, but it is not huertanix's. Drea (Andrea)'s account (`wp_users.ID=4`) was deleted and her posts were reassigned, which rewrote `post_author` on every one of them. Evidence: Signed off in the body: "Drea". huertanix appears in this post's own comment thread as a separate reader three minutes after publication.
 
 ---
 

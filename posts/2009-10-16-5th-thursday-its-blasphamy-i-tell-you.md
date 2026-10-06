@@ -1,6 +1,8 @@
 # 5th Thursday?! Its Blasphamy I Tell You!!
 
-**Post** · 2009-10-16 · by `huertanix` · `wp_posts.ID=196`
+**Post** · 2009-10-16 · by `Drea` · `wp_posts.ID=196`
+
+> **Authorship corrected.** This post is stored in the WordPress database under the `huertanix` account, but it is not huertanix's. Drea (Andrea)'s account (`wp_users.ID=4`) was deleted and her posts were reassigned, which rewrote `post_author` on every one of them. Evidence: Signed off in the body: "drea". _edit_last=4.
 
 ---
 
